@@ -66,6 +66,24 @@ return {
 	-- Toggle Terminal
 	{ "akinsho/toggleterm.nvim", version = "*", config = true },
 
+	-- Git integration
+	{ "lewis6991/gitsigns.nvim" },
+
+	-- fcitx5
+	{
+		"pysan3/fcitx5.nvim",
+		config = function()
+			local en = "keyboard-us"
+
+			require("fcitx5").setup({
+				imname = {
+					norm = en,
+					cmd = en,
+				},
+				remember_prior = true,
+			})
+		end,
+	},
 	-- Noice
 	{
 		"folke/noice.nvim",

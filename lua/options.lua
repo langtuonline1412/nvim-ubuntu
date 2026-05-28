@@ -14,3 +14,4 @@ vim.opt.clipboard = "unnamedplus" -- Chia sẽ clipboard với hệ điều hàn
 vim.opt.autoindent = true -- Tự động thụt lề khi bắt đầu dòng mới
 vim.opt.smartindent = true -- Tự động căn chỉnh lề một cách thông minh
 vim.opt.termguicolors = true -- Bật màu chuẩn GUI
+vim.opt.wrap = false -- Tắt tự động ngắt dòng
