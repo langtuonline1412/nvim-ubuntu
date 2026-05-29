@@ -15,10 +15,10 @@ function RunCode()
 		cmd = "python3 " .. file
 	elseif filetype == "cpp" then
 		-- C++ (compile và run trong terminal)
-		cmd = "g++ " .. file .. " -o " .. filename .. " && ./" .. filename
+		cmd = "g++ -g " .. file .. " -o " .. filename .. " && ./" .. filename
 	elseif filetype == "c" then
 		-- C (compile and run)
-		cmd = "gcc " .. file .. " -o " .. filename .. " && ./" .. filename
+		cmd = "gcc -g " .. file .. " -o " .. filename .. " && ./" .. filename
 	elseif filetype == "java" then
 		-- Java (compile và run trong terminal)
 		cmd = "javac " .. file .. " && java " .. filename

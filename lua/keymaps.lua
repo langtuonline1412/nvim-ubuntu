@@ -65,9 +65,10 @@ map("n", "<leader>Y", [["+Y]])
 map({ "n", "v" }, "<leader>d", [["_d]])
 
 -- Debug
-map("n", "<F5>", ":lua require'dap'.continue()<CR>", { desc = "Start/Continue Debug" })
-map("n", "<F10>", ":lua require'dap'.step_over()<CR>", { desc = "Step Over" })
-map("n", "<F11>", ":lua require'dap'.step_into()<CR>", { desc = "Step Into" })
-map("n", "<F12>", ":lua require'dap'.step_out()<CR>", { desc = "Step Out" })
-map("n", "<leader>b", ":lua require'dap'.toggle_breakpoint()<CR>", { desc = "Toggle Breakpoint" })
+map("n", "<F5>", ":lua require'dap'.continue()<CR>", { desc = "Start/Continue Debug" }) -- Bắt đầu debug hoặc tiếp tục
+map("n", "<F10>", ":lua require'dap'.step_over()<CR>", { desc = "Step Over" }) -- Step Over
+map("n", "<F11>", ":lua require'dap'.step_into()<CR>", { desc = "Step Into" }) -- Step Into
+map("n", "<F12>", ":lua require'dap'.step_out()<CR>", { desc = "Step Out" }) -- Step Out
+map("n", "<leader>dc", ":lua require'dap'.terminate()<CR>", { desc = "DAP Terminate" }) -- Dừng debug
+map("n", "<leader>b", ":lua require'dap'.toggle_breakpoint()<CR>", { desc = "Toggle Breakpoint" }) -- Đặt Breakpoint
 map("n", "<leader>B", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")

@@ -8,6 +8,20 @@ return {
 		config = function()
 			local dap = require("dap")
 
+			-- Cấu hình hiển thị icon Breakpoint cho đẹp và dễ nhìn (thay vì chữ B thô sơ)
+			vim.fn.sign_define(
+				"DapBreakpoint",
+				{ text = "🔴", texthl = "DapBreakpoint", linehl = "DapBreakpointLine", numhl = "DapBreakpointNum" }
+			)
+			vim.fn.sign_define(
+				"DapBreakpointRejected",
+				{ text = "⚪", texthl = "DapBreakpointRejected", linehl = "", numhl = "" }
+			)
+			vim.fn.sign_define(
+				"DapStopped",
+				{ text = "▶️", texthl = "DapStopped", linehl = "DapStoppedLine", numhl = "DapStoppedNum" }
+			)
+
 			-- Python
 			dap.adapters.python = {
 				type = "executable",
@@ -25,6 +39,34 @@ return {
 					end,
 				},
 			}
+
+			-- C/C++
+			dap.adapters.codelldb = {
+				type = "server",
+				port = "${port}",
+				executable = {
+					-- command = vim.fn.stdpath("data") .. "/mason/packages/codelldb/extension/adapter/codelldb",
+					command = vim.fn.stdpath("data") .. "/mason/bin/codelldb",
+
+					args = { "--port", "${port}" },
+				},
+			}
+			dap.configurations.cpp = {
+				{
+					name = "Launch file",
+					type = "codelldb",
+					request = "launch",
+
+					program = function()
+						return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+					end,
+
+					cwd = "${workspaceFolder}",
+					stopOnEntry = false,
+					runInTerminal = true,
+				},
+			}
+			dap.configurations.c = dap.configurations.cpp
 		end,
 	},
 
