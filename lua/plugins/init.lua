@@ -21,9 +21,16 @@ return {
 	{
 		"williamboman/mason.nvim",
 		build = ":MasonUpdate",
+		config = true,
 	},
 	{ "williamboman/mason-lspconfig.nvim" },
 	{ "neovim/nvim-lspconfig" },
+
+	-- java
+	{
+		"mfussenegger/nvim-jdtls",
+		ft = { "java" },
+	},
 
 	-- Formatter - conform.nvim
 	{

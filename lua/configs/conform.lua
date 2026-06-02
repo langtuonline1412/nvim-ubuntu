@@ -9,6 +9,7 @@ conform.setup({
 		javascript = { "prettier" },
 		cpp = { "clang_format" },
 		c = { "clang_format" },
+		java = { "google-java-format" },
 	},
 	format_on_save = {
 		timeout_ms = 500,

@@ -7,6 +7,7 @@ lint.linters_by_ft = {
 	lua = { "luacheck" },
 	cpp = { "clangtidy" },
 	c = { "clangtidy" },
+	java = { "checkstyle" },
 }
 
 vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave" }, {

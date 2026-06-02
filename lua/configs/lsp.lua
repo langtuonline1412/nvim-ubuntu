@@ -5,12 +5,14 @@ require("mason").setup()
 require("mason-lspconfig").setup({
 	ensure_installed = {
 		"lua_ls",
+		"bashls",
 		"ts_ls",
 		"pyright",
 		"html",
 		"cssls",
 		"jsonls",
 		"clangd",
+		"jdtls",
 	},
 })
 
@@ -24,10 +26,19 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 		vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
 		vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+		vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float)
+		vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
+		vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
 	end,
 })
 
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
+-- local capabilities = require("cmp_nvim_lsp").default_capabilities()
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+local ok, cmp_lsp = pcall(require, "cmp_nvim_lsp")
+if ok then
+	capabilities = cmp_lsp.default_capabilities(capabilities)
+end
 
 -- config từng server
 vim.lsp.config("lua_ls", {
@@ -40,6 +51,10 @@ vim.lsp.config("lua_ls", {
 })
 
 vim.lsp.config("ts_ls", {
+	capabilities = capabilities,
+})
+
+vim.lsp.config("bashls", {
 	capabilities = capabilities,
 })
 
@@ -70,6 +85,22 @@ vim.lsp.config("clangd", {
 		"--header-insertion=iwyu",
 	},
 })
+
+-- java
+-- local home = os.getenv("HOME")
+-- local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:t")
+-- local workspace_dir = home .. "/.local/share/eclipse/" .. project_name
+--
+-- vim.api.nvim_create_autocmd("FileType", {
+-- 	pattern = "java",
+-- 	callback = function()
+-- 		require("jdtls").start_or_attach({
+-- 			capabilities = capabilities,
+-- 			cmd = { "jdtls", "-data", workspace_dir },
+-- 			root_dir = require("jdtls.setup").find_root({ ".git", "pom.xml", "build.gradle", "gradlew" }),
+-- 		})
+-- 	end,
+-- })
 
 -- enable tất cả
 vim.lsp.enable({
