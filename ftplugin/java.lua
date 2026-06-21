@@ -5,9 +5,17 @@ if ok then
 	capabilities = cmp_lsp.default_capabilities(capabilities)
 end
 
+local home = vim.fn.expand("~")
+local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
+local workspace_dir = home .. "/.local/share/eclipse/" .. project_name
+
 local config = {
 	capabilities = capabilities,
-	cmd = { "jdtls" },
+	cmd = {
+		"jdtls",
+		"-data",
+		workspace_dir,
+	},
 	root_dir = vim.fs.dirname(vim.fs.find({ "gradlew", ".git", "mvnw" }, { upward = true })[1]),
 
 	-- Đây là nơi kích hoạt các tính năng mở rộng (như Debug)
