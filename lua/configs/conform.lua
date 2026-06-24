@@ -10,6 +10,7 @@ conform.setup({
 		cpp = { "clang_format" },
 		c = { "clang_format" },
 		java = { "google-java-format" },
+		rust = { "rustfmt" },
 	},
 	format_on_save = {
 		timeout_ms = 500,

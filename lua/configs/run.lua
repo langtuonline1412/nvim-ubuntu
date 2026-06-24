@@ -19,6 +19,11 @@ function RunCode()
 	elseif filetype == "c" then
 		-- C (compile and run)
 		cmd = "gcc -g " .. file .. " -o " .. filename .. " && ./" .. filename
+	elseif filetype == "rust" then
+		-- Rust (Compile and run) biên dịch và chạy file rust đơn lẻ
+		-- cmd = "rustc " .. file .. " && ./" .. filename
+		-- Run project (Cargo) Chạy dự án tạo bằng cargo
+		cmd = "cargo run"
 	elseif filetype == "java" then
 		-- Java (compile và run trong terminal)
 		cmd = "javac " .. file .. " && java " .. filename

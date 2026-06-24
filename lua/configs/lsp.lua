@@ -86,6 +86,43 @@ vim.lsp.config("clangd", {
 	},
 })
 
+-- Rust
+vim.lsp.config("rust_analyzer", {
+	capabilities = capabilities,
+
+	settings = {
+		["rust-analyzer"] = {
+			cargo = {
+				allFeatures = true,
+			},
+			check = {
+				command = "clippy",
+			},
+			-- checkOnSave = {
+			-- 	command = "clippy",
+			-- },
+			procMacro = {
+				enable = true,
+			},
+			diagnostics = {
+				enable = true,
+			},
+			inlayHints = {
+				bindingModeHints = {
+					enable = true,
+				},
+				closureReturnTypeHints = {
+					enable = "always",
+				},
+				lifetimeElisionHints = {
+					enable = "always",
+				},
+			},
+		},
+	},
+})
+vim.lsp.enable("rust_analyzer")
+
 -- java
 -- local home = os.getenv("HOME")
 -- local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:t")
