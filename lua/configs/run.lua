@@ -24,6 +24,9 @@ function RunCode()
 		-- cmd = "rustc " .. file .. " && ./" .. filename
 		-- Run project (Cargo) Chạy dự án tạo bằng cargo
 		cmd = "cargo run"
+	elseif filetype == "zig" then
+		-- Zig
+		cmd = "zig build run"
 	elseif filetype == "java" then
 		-- Java (compile và run trong terminal)
 		cmd = "javac " .. file .. " && java " .. filename

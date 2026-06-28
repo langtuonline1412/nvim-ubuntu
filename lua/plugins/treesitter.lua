@@ -6,7 +6,20 @@ return {
 	buid = ":TSUpdate",
 	config = function()
 		require("nvim-treesitter").setup({
-			ensure_installed = { "lua", "vim", "python", "javascript", "html", "css", "c", "cpp", "java" },
+			ensure_installed = {
+				"lua",
+				"vim",
+				"python",
+				"javascript",
+				"html",
+				"css",
+				"c",
+				"cpp",
+				"java",
+				"zig",
+				"rust",
+				"toml",
+			},
 			highlight = { enable = true },
 			autotag = { enable = true },
 		})

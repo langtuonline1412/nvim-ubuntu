@@ -86,6 +86,24 @@ vim.lsp.config("clangd", {
 	},
 })
 
+-- Zig
+vim.lsp.config("zls", {
+	capabilities = capabilities,
+	cmd = { "zls" },
+	filetypes = { "zig" },
+	root_markers = {
+		"build.zig",
+		".git",
+	},
+	settings = {
+		zls = {
+			enable_build_on_save = true,
+			-- zig_exe_path = "/snap/bin/zig",
+		},
+	},
+})
+vim.lsp.enable("zls")
+
 -- Rust
 vim.lsp.config("rust_analyzer", {
 	capabilities = capabilities,
