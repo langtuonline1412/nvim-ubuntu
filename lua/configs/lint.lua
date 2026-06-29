@@ -8,6 +8,7 @@ lint.linters_by_ft = {
 	cpp = { "clangtidy" },
 	c = { "clangtidy" },
 	java = { "checkstyle" },
+	go = { "golangcilint" },
 }
 
 vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave" }, {

@@ -86,6 +86,51 @@ vim.lsp.config("clangd", {
 	},
 })
 
+-- Golang
+vim.lsp.config("gopls", {
+	capabilities = capabilities,
+	settings = {
+		gopls = {
+			gofumpt = true,
+			staticcheck = true,
+			completeUnimported = true,
+			usePlaceholders = true,
+			matcher = "Fuzzy",
+
+			analyses = {
+				fieldalignment = true,
+				nilness = true,
+				shadow = true,
+				unusedparams = true,
+				unusedwrite = true,
+				useany = true,
+			},
+
+			hints = {
+				assignVariableTypes = true,
+				compositeLiteralFields = true,
+				compositeLiteralTypes = true,
+				constantValues = true,
+				functionTypeParameters = true,
+				parameterNames = true,
+				rangeVariableTypes = true,
+			},
+
+			codelenses = {
+				gc_details = false,
+				generate = true,
+				regenerate_cgo = true,
+				run_govulncheck = true,
+				test = true,
+				tidy = true,
+				upgrade_dependency = true,
+				vendor = true,
+			},
+		},
+	},
+})
+vim.lsp.enable("gopls")
+
 -- Zig
 vim.lsp.config("zls", {
 	capabilities = capabilities,

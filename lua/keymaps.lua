@@ -70,5 +70,7 @@ map("n", "<F10>", ":lua require'dap'.step_over()<CR>", { desc = "Step Over" }) -
 map("n", "<F11>", ":lua require'dap'.step_into()<CR>", { desc = "Step Into" }) -- Step Into
 map("n", "<F12>", ":lua require'dap'.step_out()<CR>", { desc = "Step Out" }) -- Step Out
 map("n", "<leader>dc", ":lua require'dap'.terminate()<CR>", { desc = "DAP Terminate" }) -- Dừng debug
+map("n", "<leader>dr", ":lua require'dap'.repl.open()<CR>", { desc = "Debug REPL" }) -- Mở cửa sổ Debug REPL để nhập lệnh và xem output của debugger
+map("n", "<leader>dl", ":lua require'dap'.run_last()<CR>", { desc = "" }) -- Chạy lại phiên debug gần nhất mà không cần chọn cấu hình
 map("n", "<leader>b", ":lua require'dap'.toggle_breakpoint()<CR>", { desc = "Toggle Breakpoint" }) -- Đặt Breakpoint
 map("n", "<leader>B", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")

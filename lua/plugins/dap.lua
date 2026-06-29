@@ -67,6 +67,72 @@ return {
 				},
 			}
 			dap.configurations.c = dap.configurations.cpp
+
+			-- Zig
+			dap.configurations.zig = {
+				{
+					name = "Launch",
+					type = "codelldb",
+					request = "launch",
+					program = function()
+						return vim.fn.input("Executable: ", vim.fn.getcwd() .. "/zig-out/bin/", "file")
+					end,
+					cwd = "${workspaceFolder}",
+					stopOnEntry = false,
+				},
+			}
+
+			-- Rust
+			dap.configurations.rust = {
+				{
+					name = "Launch",
+					type = "codelldb",
+					request = "launch",
+					program = function()
+						return vim.fn.input("Executable: ", vim.fn.getcwd() .. "/target/debug/", "file")
+					end,
+					cwd = "${workspaceFolder}",
+				},
+			}
+
+			-- Golang
+			dap.adapters.go = {
+				type = "server",
+				port = "${port}",
+				executable = {
+					command = "dlv",
+					args = { "dap", "-l", "127.0.0.1:${port}" },
+				},
+			}
+
+			dap.configurations.go = {
+				{
+					type = "go",
+					name = "Debug",
+					request = "launch",
+					program = "${file}",
+				},
+				{
+					type = "go",
+					name = "Debug (package)",
+					request = "launch",
+					program = "${workspaceFolder}",
+				},
+				{
+					type = "go",
+					name = "Debug test",
+					request = "launch",
+					mode = "test",
+					program = "${file}",
+				},
+				{
+					type = "go",
+					name = "Debug test (package)",
+					request = "launch",
+					mode = "test",
+					program = "./${relativeFileDirname}",
+				},
+			}
 		end,
 	},
 

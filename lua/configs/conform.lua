@@ -11,6 +11,7 @@ conform.setup({
 		c = { "clang_format" },
 		java = { "google-java-format" },
 		rust = { "rustfmt" },
+		go = { "goimports", "gofmt" },
 	},
 	format_on_save = {
 		timeout_ms = 500,

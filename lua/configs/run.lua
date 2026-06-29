@@ -27,6 +27,9 @@ function RunCode()
 	elseif filetype == "zig" then
 		-- Zig
 		cmd = "zig build run"
+	elseif filetype == "go" then
+		-- Go
+		cmd = "go run ."
 	elseif filetype == "java" then
 		-- Java (compile và run trong terminal)
 		cmd = "javac " .. file .. " && java " .. filename
